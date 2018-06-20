@@ -16,7 +16,7 @@ namespace ValidaCadastro
 {
 	public partial class Form1 : Form
 	{
-		private LogService _logService;
+		private readonly LogService _logService;
 		private string arquivo;
 		private string mensagem;
 		int contador;
@@ -197,6 +197,7 @@ namespace ValidaCadastro
 									case 33: //telefone 1 DDD
 										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+"DDD");
 										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1)+"DDD");
+										Validador.ConfereNumero(arrStrings[i],contador + " campo: " + (i + 1) + "DDD");
 										break;
 									case 34: //telefone 1
 										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " telefone 1");
@@ -204,6 +205,7 @@ namespace ValidaCadastro
 										break;
 									case 35: //telefone 2 DDD
 										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1)+" DDD2");
+										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + "DDD");
 										break;
 									case 36: //telefone 2
 										Validador.ConfereTamanho(arrStrings[i], 20, contador + " campo: " + (i + 1) + "telefone 2");

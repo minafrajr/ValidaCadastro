@@ -53,13 +53,10 @@ namespace ValidaCadastro
 		}
 	}
 
-    public class TamnahoMinimo : Exception
-    {
-        public override string Message
-        {
-            get { return Const.erroTamanhoMinimo; }
-        }
-    }
+	public class TamnahoMinimo : Exception
+	{
+		public override string Message => Const.erroTamanhoMinimo;
+	}
 }
 
 

@@ -10,47 +10,29 @@ namespace ValidaCadastro
 {
 	public class TamanhoErradoException : Exception
 	{
-		public override string Message
-		{
-			get { return Const.erroTamanho; }
-		}
+		public override string Message => Const.erroTamanho;
 	}
 
 	public class ValorNuloException : Exception
 	{
-		public override string Message
-		{
-			get { return Const.erroNulo; }
-		}
+		public override string Message => Const.erroNulo;
 	}
 
 	public class NumeroInvalidoException : Exception
 	{
-		public override string Message
-		{
-			get { return Const.erroNumero; }
-		}
+		public override string Message => Const.erroNumero;
 	}
 	public class DataInvalidaException : Exception
 	{
-		public override string Message
-		{
-			get { return Const.erroDataInvalida; }
-		}
+		public override string Message => Const.erroDataInvalida;
 	}
 	public class DataFormatoInvalidoException : Exception
 	{
-		public override string Message
-		{
-			get { return Const.erroDataFormatoInvalido; }
-		}
+		public override string Message => Const.erroDataFormatoInvalido;
 	}
 	public class ValorIncorretoExcepetion : Exception
 	{
-		public override string Message
-		{
-			get { return Const.erroValorIncorreto; }
-		}
+		public override string Message => Const.erroValorIncorreto;
 	}
 
 	public class TamnahoMinimo : Exception

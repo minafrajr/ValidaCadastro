@@ -18,11 +18,10 @@ namespace ValidaCadastro
 	{
 		private readonly LogService _logService;
 		private string arquivo;
-		private string mensagem;
 		int contador;
 		private DateTime tempoInicial, tempoFinal;
 		private TimeSpan tempodecorrido;
-
+        
 		public Form1()
 		{
 			InitializeComponent();
@@ -161,9 +160,12 @@ namespace ValidaCadastro
 										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1)+" Logradouro");
 										break;
 									case 26: //número da resid
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" Numero resid.");
-										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " Numero resid.");
-										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Numero resid.");
+										if (arrStrings[i+1].Equals("N"))//caso tenha o número da residência
+										{
+											Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Numero resid.");
+											Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " Numero resid.");
+											Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Numero resid."); 
+										}
 										break;
 									case 27: //Sem numero da resid
 										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Sem numero da resid");
@@ -196,8 +198,8 @@ namespace ValidaCadastro
 										break;
 									case 33: //telefone 1 DDD
 										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+"DDD");
-										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1)+"DDD");
-										Validador.ConfereNumero(arrStrings[i],contador + " campo: " + (i + 1) + "DDD");
+										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1)+" DDD");
+										Validador.ConfereNumero(arrStrings[i],contador + " campo: " + (i + 1) + " DDD");
 										break;
 									case 34: //telefone 1
 										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " telefone 1");
@@ -205,7 +207,8 @@ namespace ValidaCadastro
 										break;
 									case 35: //telefone 2 DDD
 										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1)+" DDD2");
-										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + "DDD");
+										if(!string.IsNullOrEmpty(arrStrings[i]))
+											Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " DDD2");
 										break;
 									case 36: //telefone 2
 										Validador.ConfereTamanho(arrStrings[i], 20, contador + " campo: " + (i + 1) + "telefone 2");
@@ -237,15 +240,18 @@ namespace ValidaCadastro
 							}
 							contador++;
 							lbl_linhaslidas.Invoke(new Action(() => { lbl_linhaslidas.Text = contador.ToString(); }));
+                           
 							this.backgroundWorker1.ReportProgress(contador);
 						}
 					}
-					_logService.Log("Leitura concluída");
+                    //lbl_erros.Text = _logService.Numero_errros.ToString();
+                    //lbl_erros.Invoke(new Action(() => { lbl_erros.Text = _logService.Numero_errros.ToString(); }));
+                    _logService.Log("Leitura concluída");
 				}
 			}
 			catch (Exception e)
 			{
-				throw e;
+                _logService.Log(e);
 			}
 		}
 
@@ -281,11 +287,13 @@ namespace ValidaCadastro
 
 			tempodecorrido = tempoFinal - tempoInicial;
 			lbl_tempodecorrido.Text = tempodecorrido.TotalMinutes.ToString();
-		}
+            lbl_erros.Text = _logService.Numero_errros.ToString();
 
-		private void btn_abrirlog_Click(object sender, EventArgs e)
+        }
+
+        private void btn_abrirlog_Click(object sender, EventArgs e)
 		{
-			Process.Start(LogService.arquivoLog);
+			Process.Start(_logService.ArquivoLog);
 		}
 	}
 }

@@ -9,9 +9,15 @@ namespace ValidaCadastro
 {
 	public class LogService
 	{
-		public static readonly string arquivoLog =
-			@"D:\minaf\Documents\Visual Studio 2013\Projects\ValidaCadastro\ValidaCadastro\Log\log.txt";
-		public void Log(string mensagem)
+		private static readonly string arquivoLog = @"D:\minaf\Documents\Visual Studio 2013\Projects\ValidaCadastro\ValidaCadastro\Log\log.txt";
+
+        private int numero_errros = 0;
+        
+        public int Numero_errros { get => numero_errros;  }
+
+        public string ArquivoLog { get => arquivoLog; }
+
+        public void Log(string mensagem)
 		{
 			try
 			{
@@ -39,6 +45,8 @@ namespace ValidaCadastro
 			try
 			{
 				GravaLog(string.Format("ERRO: linha: {0} - {1}", linha, ex.Message));
+                int numero_errros = 0;
+                numero_errros++;
 			}
 			catch (Exception e)
 			{

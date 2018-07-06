@@ -21,7 +21,7 @@ namespace ValidaCadastro
 		int contador;
 		private DateTime tempoInicial, tempoFinal;
 		private TimeSpan tempodecorrido;
-        
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -79,16 +79,16 @@ namespace ValidaCadastro
 								switch (i)
 								{
 									case 3://Nome do aluno
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" Nome do aluno");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Nome do aluno");
 										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1) + " Nome do aluno");
 										break;
 									case 4: //sexo
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Sexo");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Sexo");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Sexo");
 										Validador.ConfereValor(arrStrings[i], "F", "M", contador + " campo: " + (i + 1) + " Sexo");
 										break;
 									case 5: //data de nascimento
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Data de nasc.");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Data de nasc.");
 										Validador.ConfereData(arrStrings[i], contador + " campo: " + (i + 1) + " Data de nasc");
 										if (DateTime.Compare(Convert.ToDateTime(arrStrings[i]), Convert.ToDateTime("01-01-2010")) <
 											0)
@@ -105,75 +105,75 @@ namespace ValidaCadastro
 										}
 										break;
 									case 7://Nome da mãe
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" Nome da mãe");
-										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1)+" Nome da mãe");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Nome da mãe");
+										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1) + " Nome da mãe");
 										break;
 									case 8://CPF da mãe
-										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1)+" Cpf da Mãe");
+										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " Cpf da Mãe");
 										break;
 									case 9://Nome do pai
-										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1)+" Nome do Pai");
+										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1) + " Nome do Pai");
 										break;
 									case 10://CPF do pai
-										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1)+" CPF do pai");
+										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " CPF do pai");
 										break;
 									case 11://CPF do estudante
-										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1)+" Cpf do estudante");
+										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " Cpf do estudante");
 										break;
 									case 12://Tipo de Certidão
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Tipo de Certidão");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Tipo de Certidão");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Tipo de Certidão");
 										Validador.ConfereValor(arrStrings[i], "N", "C", contador + " campo: " + (i + 1) + " Tipo de Certidão");
 										break;
 									case 13://Certidão de Nascimento Foi Emitida
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Certidão de Nascimento Foi Emitida");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Certidão de Nascimento Foi Emitida");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Certidão de Nascimento Foi Emitida");
 										Validador.ConfereValor(arrStrings[i], "2", "2", contador + " campo: " + (i + 1) + " Certidão de Nascimento Foi Emitida");
 										break;
 									case 18: //matrícula da certidao
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" Matrícula");
-										Validador.ConfereTamanho(arrStrings[i], 50, contador + " campo: " + (i + 1)+" Matrícula");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Matrícula");
+										Validador.ConfereTamanho(arrStrings[i], 50, contador + " campo: " + (i + 1) + " Matrícula");
 										Validador.ConfereTamanhoMinimo(arrStrings[i], 2, contador + " campo: " + (i + 1) + " Matrícula");
 										break;
 									case 19: //Carteira Identidade aluno
-										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1)+" C.I.");
+										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " C.I.");
 										break;
 									case 21: //Altas habilidades
-										Validador.ConfereValor(arrStrings[i], "1", "2", contador + " campo: " + (i + 1)+" Altas Habil.");
-										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1)+" Altas Habili.");
+										Validador.ConfereValor(arrStrings[i], "1", "2", contador + " campo: " + (i + 1) + " Altas Habil.");
+										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Altas Habili.");
 										break;
 									case 22: //zona
-										Validador.ConfereValor(arrStrings[i], "1", "2", contador + " campo: " + (i + 1)+" Zona");
-										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1)+" Zona");
+										Validador.ConfereValor(arrStrings[i], "1", "2", contador + " campo: " + (i + 1) + " Zona");
+										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Zona");
 										break;
 									case 23: //CEP
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" CEP");
-										Validador.ConfereTamanho(arrStrings[i], 10, contador + " campo: " + (i + 1)+" CEP");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " CEP");
+										Validador.ConfereTamanho(arrStrings[i], 10, contador + " campo: " + (i + 1) + " CEP");
 										break;
 									case 24: //Tipo logradouro
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" Tipo Logradouro");
-										Validador.ConfereTamanho(arrStrings[i], 11, contador + " campo: " + (i + 1)+" Tipo logradouro");
-										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1)+" Tipo Logradouro");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Tipo Logradouro");
+										Validador.ConfereTamanho(arrStrings[i], 11, contador + " campo: " + (i + 1) + " Tipo logradouro");
+										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Tipo Logradouro");
 										break;
 									case 25: //logradouro
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" Logradouro");
-										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1)+" Logradouro");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Logradouro");
+										Validador.ConfereTamanho(arrStrings[i], 255, contador + " campo: " + (i + 1) + " Logradouro");
 										break;
 									case 26: //número da resid
-										if (arrStrings[i+1].Equals("N"))//caso tenha o número da residência
+										if (arrStrings[i + 1].Equals("N"))//caso tenha o número da residência
 										{
-											Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Numero resid.");
+											Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Numero resid.");
 											Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " Numero resid.");
-											Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Numero resid."); 
+											Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Numero resid.");
 										}
 										break;
 									case 27: //Sem numero da resid
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Sem numero da resid");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Sem numero da resid");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Sem numero da resid");
 										Validador.ConfereValor(arrStrings[i], "S", "N", contador + " campo: " + (i + 1) + " Sem numero da resid");
 										break;
 									case 28: //bairro
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " bairro");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " bairro");
 										Validador.ConfereTamanho(arrStrings[i], 100, contador + " campo: " + (i + 1) + " bairro");
 										break;
 									case 29: //complemento
@@ -181,33 +181,40 @@ namespace ValidaCadastro
 											Validador.ConfereTamanho(arrStrings[i], 150, contador + " campo: " + (i + 1) + " complemento");
 										break;
 									case 30: //responsável cadastro
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Responsável cadastro");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Responsável cadastro");
 										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Responsável cadastro");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Responsável cadastro");
 
-										if (!arrStrings[i].Equals("3"))
+										if (!arrStrings[i].Equals("3"))//se p responsáve for o pai ou a mãe
+										{
+											//só pode conter os valores 1 ou 2
 											Validador.ConfereValor(arrStrings[i], "1", "2", contador + " campo: " + (i + 1) + " Responsável cadastro");
+											//os campos nome do resposável CPF devem ficar nulos
+											Validador.ConfereNulo(arrStrings[i + 1], contador + " campo: " + (i + 1) + " Nome responsável -outro");
+											Validador.ConfereNulo(arrStrings[i + 2], contador + " campo: " + (i + 1) + " cpf responsável");
+
+										}
 										else
 										{
 											//nome do responsável - índice 31
-											Validador.ConfereNulo(arrStrings[i + 1], contador + " campo: " + (i + 1)+" Nome responsável -outro");
-											Validador.ConfereTamanho(arrStrings[i + 1], 255, contador + " campo: " + (i + 1)+" Nome Responsável - outro");
+											Validador.ConfereNaoNulo(arrStrings[i + 1], contador + " campo: " + (i + 1) + " Nome responsável -outro");
+											Validador.ConfereTamanho(arrStrings[i + 1], 255, contador + " campo: " + (i + 1) + " Nome Responsável - outro");
 											//cpf do responsável - índice 32
 											Validador.ConfereTamanho(arrStrings[i + 2], 15, contador + " campo: cpf responsável" + (i + 2));
 										}
 										break;
 									case 33: //telefone 1 DDD
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+"DDD");
-										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1)+" DDD");
-										Validador.ConfereNumero(arrStrings[i],contador + " campo: " + (i + 1) + " DDD");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + "DDD");
+										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1) + " DDD");
+										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " DDD");
 										break;
 									case 34: //telefone 1
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " telefone 1");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " telefone 1");
 										Validador.ConfereTamanho(arrStrings[i], 20, contador + " campo: " + (i + 1) + " telefone 1");
 										break;
 									case 35: //telefone 2 DDD
-										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1)+" DDD2");
-										if(!string.IsNullOrEmpty(arrStrings[i]))
+										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1) + " DDD2");
+										if (!string.IsNullOrEmpty(arrStrings[i]))
 											Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " DDD2");
 										break;
 									case 36: //telefone 2
@@ -217,21 +224,21 @@ namespace ValidaCadastro
 										Validador.ConfereTamanho(arrStrings[i], 100, contador + " campo: " + (i + 1) + " E-mail");
 										break;
 									case 38: //modalidade de ensino
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1)+" Modalidade Ensino");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Modalidade Ensino");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Modalidade Ensino");
 										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Modalidade Ensino");
 										Validador.ConfereValor(arrStrings[i], "1", "1",
 											contador + " campo: " +
-											(i + 1)+"Modalidade Ensino"); //nao pode ser outro valor a não ser 1-Ensino Fund. Regular
+											(i + 1) + "Modalidade Ensino"); //nao pode ser outro valor a não ser 1-Ensino Fund. Regular
 										break;
 									case 39://Ano que irá cursar em 2018
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Ano que irá cursar");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Ano que irá cursar");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Ano que irá cursar");
 										Validador.ConfereValor(arrStrings[i], "1", "1",
-											contador + " campo: " + (i + 1)+" Ano que irá cursar"); //nao pode ser diferete de 1 - 1º ano
+											contador + " campo: " + (i + 1) + " Ano que irá cursar"); //nao pode ser diferete de 1 - 1º ano
 										break;
 									case 40://Procedente de
-										Validador.ConfereNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Procedente de");
+										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Procedente de");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Procedente de");
 										Validador.ConfereValor(arrStrings[i], "3", "3",
 											contador + " campo: " + (i + 1) + " Procedente de");
@@ -240,18 +247,18 @@ namespace ValidaCadastro
 							}
 							contador++;
 							lbl_linhaslidas.Invoke(new Action(() => { lbl_linhaslidas.Text = contador.ToString(); }));
-                           
+
 							this.backgroundWorker1.ReportProgress(contador);
 						}
 					}
-                    //lbl_erros.Text = _logService.Numero_errros.ToString();
-                    //lbl_erros.Invoke(new Action(() => { lbl_erros.Text = _logService.Numero_errros.ToString(); }));
-                    _logService.Log("Leitura concluída");
+					//lbl_erros.Text = _logService.Numero_errros.ToString();
+					//lbl_erros.Invoke(new Action(() => { lbl_erros.Text = _logService.Numero_errros.ToString(); }));
+					_logService.Log("Leitura concluída");
 				}
 			}
 			catch (Exception e)
 			{
-                _logService.Log(e);
+				_logService.Log(e);
 			}
 		}
 
@@ -287,11 +294,11 @@ namespace ValidaCadastro
 
 			tempodecorrido = tempoFinal - tempoInicial;
 			lbl_tempodecorrido.Text = tempodecorrido.TotalMinutes.ToString();
-            lbl_erros.Text = _logService.Numero_errros.ToString();
+			lbl_erros.Text = _logService.Numero_errros.ToString();
 
-        }
+		}
 
-        private void btn_abrirlog_Click(object sender, EventArgs e)
+		private void btn_abrirlog_Click(object sender, EventArgs e)
 		{
 			Process.Start(_logService.ArquivoLog);
 		}

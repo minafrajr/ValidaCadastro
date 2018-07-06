@@ -48,7 +48,12 @@ namespace ValidaCadastro
 			}
 		}
 
-		public static void ConfereNulo(string valor, string linha)
+		/// <summary>
+		/// Confere se um campo obrigatório está em branco
+		/// </summary>
+		/// <param name="valor"></param>
+		/// <param name="linha"></param>
+		public static void ConfereNaoNulo(string valor, string linha)
 		{
 			try
 			{
@@ -60,7 +65,18 @@ namespace ValidaCadastro
 				_logService.Log(ex, linha);
 			}
 		}
-
+		public static void ConfereNulo(string valor, string linha)
+		{
+			try
+			{
+				if (!string.IsNullOrEmpty(valor))
+					throw new ValorNaoNuloException();
+			}
+			catch (Exception ex)
+			{
+				_logService.Log(ex, linha);
+			}
+		}
 		public static void ConfereData(string data, string linha)
 		{
 			try

@@ -39,6 +39,11 @@ namespace ValidaCadastro
 	{
 		public override string Message => Const.erroTamanhoMinimo;
 	}
+
+	public class ValorNaoNuloException : Exception
+	{
+		public override string Message => Const.erroNaoNulo;
+	}
 }
 
 

@@ -185,7 +185,7 @@ namespace ValidaCadastro
 										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Responsável cadastro");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Responsável cadastro");
 
-										if (!arrStrings[i].Equals("3"))//se p responsáve for o pai ou a mãe
+										if (!arrStrings[i].Equals("3"))//se p responsável for o pai ou a mãe
 										{
 											//só pode conter os valores 1 ou 2
 											Validador.ConfereValor(arrStrings[i], "1", "2", contador + " campo: " + (i + 1) + " Responsável cadastro");

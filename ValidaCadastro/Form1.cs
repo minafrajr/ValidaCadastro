@@ -132,8 +132,9 @@ namespace ValidaCadastro
 										break;
 									case 18: //matrícula da certidao
 										Validador.ConfereNaoNulo(arrStrings[i], contador + " campo: " + (i + 1) + " Matrícula");
-										Validador.ConfereTamanho(arrStrings[i], 50, contador + " campo: " + (i + 1) + " Matrícula");
-										Validador.ConfereTamanhoMinimo(arrStrings[i], 2, contador + " campo: " + (i + 1) + " Matrícula");
+										Validador.ConfereTamanho(arrStrings[i], 32, contador + " campo: " + (i + 1) + " Matrícula");
+										//Validador.ConfereTamanho(arrStrings[i], 2, contador + " campo: " + (i + 1) + " Matrícula");
+										Validador.ConfereTamanhoMinimo(arrStrings[i], 32, contador + " campo: " + (i + 1) + " Matrícula - tamanho: " + arrStrings[i].Length.ToString());
 										break;
 									case 19: //Carteira Identidade aluno
 										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " C.I.");

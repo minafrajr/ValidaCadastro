@@ -39,7 +39,7 @@ namespace ValidaCadastro
 		{
 			try
 			{
-				if (campo.Length <= maxtamanho)
+				if (campo.Length < maxtamanho)
 					throw new TamnahoMinimo();
 			}
 			catch (Exception ex)

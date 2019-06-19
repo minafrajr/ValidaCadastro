@@ -6,10 +6,21 @@ using System.Threading.Tasks;
 
 namespace ValidaCadastro
 {
+	/// <summary>
+	/// Classe de validação
+	/// </summary>
 	static class Validador
 	{
-		private static LogService _logService = new LogService();
+		/// <summary>
+		/// Objeto de serviço de log do sistema
+		/// </summary>
+		private static readonly LogService LogService = new LogService();
 
+		/// <summary>
+		/// Confere se um determinado valor pode ser convertido em número inteiro de 32 bits
+		/// </summary>
+		/// <param name="valor">O valor a ser verificado se é um número</param>
+		/// <param name="linha">O texto para o arquivo de log</param>
 		public static void ConfereNumero(string valor, string linha)
 		{
 			try
@@ -19,10 +30,15 @@ namespace ValidaCadastro
 			}
 			catch (Exception ex)
 			{
-				_logService.Log(ex, linha);
+				LogService.Log(ex, linha);
 			}
 		}
-
+		/// <summary>
+		/// Confere se o tamanho um campo est tamanho máximo
+		/// </summary>
+		/// <param name="campo">O campo ao qual se quer conferir</param>
+		/// <param name="maxtamanho">O tamnho máximo que o campo deve ter</param>
+		/// <param name="linha">O texto para o arquivo de log</param>
 		public static void ConfereTamanho(string campo, int maxtamanho, string linha)
 		{
 			try
@@ -32,9 +48,15 @@ namespace ValidaCadastro
 			}
 			catch (Exception ex)
 			{
-				_logService.Log(ex, linha);
+				LogService.Log(ex, linha);
 			}
 		}
+		/// <summary>
+		/// Confere se um campo possui um tamnho mínimo
+		/// </summary>
+		/// <param name="campo">O campo ao qual se quer conferir</param>
+		/// <param name="maxtamanho">O tamanho mínimo que o campo deve possuir</param>
+		/// <param name="linha">O texto para o arquivo de log</param>
 		public static void ConfereTamanhoMinimo(string campo, int maxtamanho, string linha)
 		{
 			try
@@ -44,15 +66,15 @@ namespace ValidaCadastro
 			}
 			catch (Exception ex)
 			{
-				_logService.Log(ex, linha);
+				LogService.Log(ex, linha);
 			}
 		}
 
 		/// <summary>
 		/// Confere se um campo obrigatório está em branco
 		/// </summary>
-		/// <param name="valor"></param>
-		/// <param name="linha"></param>
+		/// <param name="valor">O campo que não deve estar em branco</param>
+		/// <param name="linha">O texto para o arquivo de log</param>
 		public static void ConfereNaoNulo(string valor, string linha)
 		{
 			try
@@ -62,9 +84,14 @@ namespace ValidaCadastro
 			}
 			catch (Exception ex)
 			{
-				_logService.Log(ex, linha);
+				LogService.Log(ex, linha);
 			}
 		}
+		/// <summary>
+		/// Confere se um campo está nulo
+		/// </summary>
+		/// <param name="valor">O campo</param>
+		/// <param name="linha">O texto para o arquivo de log</param>
 		public static void ConfereNulo(string valor, string linha)
 		{
 			try
@@ -74,16 +101,19 @@ namespace ValidaCadastro
 			}
 			catch (Exception ex)
 			{
-				_logService.Log(ex, linha);
+				LogService.Log(ex, linha);
 			}
 		}
+		/// <summary>
+		/// Confere se uma data está no formato aaaa-mm-dd
+		/// </summary>
+		/// <param name="data">A data que se quer conferir</param>
+		/// <param name="linha">O texto para o arquivo de log</param>
 		public static void ConfereData(string data, string linha)
 		{
 			try
 			{
-				DateTime datareal = new DateTime();
-
-				if (!DateTime.TryParse(data, out datareal))
+				if (!DateTime.TryParse(data, out var datareal))
 					throw new DataInvalidaException();
 
 				if (!datareal.ToString("yyyy-MM-dd").Equals(data))
@@ -91,7 +121,7 @@ namespace ValidaCadastro
 			}
 			catch (Exception e)
 			{
-				_logService.Log(e, linha);
+				LogService.Log(e, linha);
 			}
 		}
 
@@ -105,20 +135,14 @@ namespace ValidaCadastro
 		{
 			try
 			{
-				bool correto = false;
-
-				if (valor.Equals(valor1))
-					correto = true;
-
-				if (valor.Equals(valor2))
-					correto = true;
+				bool correto = false || valor.Equals(valor1) || valor.Equals(valor2);
 
 				if (!correto)
 					throw new ValorIncorretoExcepetion();
 			}
 			catch (Exception e)
 			{
-				_logService.Log(e, linha);
+				LogService.Log(e, linha);
 			}
 		}
 	}

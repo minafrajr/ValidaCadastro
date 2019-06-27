@@ -44,6 +44,10 @@ namespace ValidaCadastro
 	{
 		public override string Message => Const.erroNaoNulo;
 	}
+	public class ValorMaximoPermitido : Exception
+	{
+		public override string Message => Const.erroValorMaximo;
+	}
 }
 
 

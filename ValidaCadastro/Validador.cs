@@ -75,7 +75,7 @@ namespace ValidaCadastro
 		/// </summary>
 		/// <param name="valor">O campo que não deve estar em branco</param>
 		/// <param name="linha">O texto para o arquivo de log</param>
-		public static void ConfereNaoNulo(string valor, string linha)
+		public static void ConfereObrigatorio(string valor, string linha)
 		{
 			try
 			{
@@ -143,6 +143,25 @@ namespace ValidaCadastro
 			catch (Exception e)
 			{
 				LogService.Log(e, linha);
+			}
+		}
+
+		/// <summary>
+		/// Confere se um campo possui o valor máximo
+		/// </summary>
+		/// <param name="campo">O nome do campo</param>
+		/// <param name="valormax"> valor máximo do campo</param>
+		/// <param name="linha">a linha </param>
+		public static void ConfereValorMaximo(string campo,int valormax,string linha)
+		{
+			try
+			{
+				if (Convert.ToInt32(campo) > valormax)
+					throw new ValorMaximoPermitido();
+			}
+			catch (Exception ex)
+			{
+				LogService.Log(ex,linha);
 			}
 		}
 	}

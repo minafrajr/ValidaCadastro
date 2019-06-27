@@ -16,5 +16,7 @@ namespace ValidaCadastro
 		public const string erroDataInvalida = "A data não foi convertida para o formato correto";
 		public const string erroValorIncorreto = "O valor não confere como especificado";
 		public const string erroTamanhoMinimo = "O Tamanho mínimo do campo foi atingido";
-	}
+		public const string erroValorMaximo = "O valor do campo ultrapassou o valor máximo permitido";
+
+    }
 }

@@ -176,9 +176,13 @@ namespace ValidaCadastro
 										Validador.ConfereValor(arrStrings[i], "S", "N", contador + " campo: " + (i + 1) + " Sem numero da resid");
 										break;
 									case 28: //bairro
-										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " bairro");
-										Validador.ConfereTamanho(arrStrings[i], 100, contador + " campo: " + (i + 1) + " bairro");
-										break;
+										if (arrStrings[i-6].Equals("1"))
+										{
+											Validador.ConfereObrigatorio(arrStrings[i],contador + " campo: " + (i + 1) + " bairro");
+										}
+										Validador.ConfereTamanho(arrStrings[i],100,contador + " campo: " + (i + 1) + " bairro");
+										break; 
+									   
 									case 29: //complemento
 										if (!string.IsNullOrEmpty(arrStrings[i]))
 											Validador.ConfereTamanho(arrStrings[i], 150, contador + " campo: " + (i + 1) + " complemento");

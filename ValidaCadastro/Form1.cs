@@ -90,12 +90,10 @@ namespace ValidaCadastro
 									case 5: //data de nascimento
 										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " Data de nasc.");
 										Validador.ConfereData(arrStrings[i], contador + " campo: " + (i + 1) + " Data de nasc");
-										if (DateTime.Compare(Convert.ToDateTime(arrStrings[i]), Convert.ToDateTime("31-03-2013")) >
-											0)
-										{
-											_logService.Log("Existe aluno com data de nascimento posterior a 31/03/2013 na linha: " +
-															contador + " campo: " + (i + 1) + " Data de nasc");
-										}
+										//if (DateTime.Compare(Convert.ToDateTime(arrStrings[i]), Convert.ToDateTime("31-03-2013")) >//	0)
+										//{
+										//	_logService.Log("Existe aluno com data de nascimento posterior a 31/03/2013 na linha: " + contador + " campo: " + (i + 1) + " Data de nasc");
+										//}
 										break;
 									case 6://Deficiente?
 										if (!string.IsNullOrEmpty(arrStrings[i]))
@@ -135,7 +133,7 @@ namespace ValidaCadastro
 										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " Matrícula");
 										Validador.ConfereTamanho(arrStrings[i], 50, contador + " campo: " + (i + 1) + " Matrícula");
 										//Validador.ConfereTamanho(arrStrings[i], 2, contador + " campo: " + (i + 1) + " Matrícula");
-										Validador.ConfereTamanhoMinimo(arrStrings[i], 50, contador + " campo: " + (i + 1) + " Matrícula - tamanho: " + arrStrings[i].Length.ToString());
+										Validador.ConfereTamanhoMinimo(arrStrings[i], 40, contador + " campo: " + (i + 1) + " Matrícula - tamanho: " + arrStrings[i].Length.ToString());
 										break;
 									case 19: //Carteira Identidade aluno
 										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " C.I.");
@@ -262,8 +260,8 @@ namespace ValidaCadastro
 							this.backgroundWorker1.ReportProgress(contador);
 						}
 					}
-					//lbl_erros.Text = _logService.Numero_errros.ToString();
-					//lbl_erros.Invoke(new Action(() => { lbl_erros.Text = _logService.Numero_errros.ToString(); }));
+					lbl_erros.Text = _logService.Numero_errros.ToString();
+					lbl_erros.Invoke(new Action(() => { lbl_erros.Text = _logService.Numero_errros.ToString(); }));
 					_logService.Log("Leitura concluída");
 				}
 			}

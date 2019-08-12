@@ -9,7 +9,10 @@ namespace ValidaCadastro
 {
 	public class LogService
 	{
-		private static readonly string arquivoLog = @"D:\minaf\Documents\Visual Studio 2013\Projects\ValidaCadastro\ValidaCadastro\Log\log.txt";
+		//private static readonly string arquivoLog = @"D:\minaf\Documents\Visual Studio 2013\Projects\ValidaCadastro\ValidaCadastro\Log\log.txt";
+
+		private static readonly string arquivoLog = @"D:\minaf\Desktop\log.txt";
+
 
 		private int numero_errros = 0;
 

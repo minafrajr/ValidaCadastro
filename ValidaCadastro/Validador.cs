@@ -164,5 +164,20 @@ namespace ValidaCadastro
 				LogService.Log(ex,linha);
 			}
 		}
+
+	    public static void ConfereDiferenteZero(string campo, string linha)
+	    {
+	        try
+	        {
+	            if (Convert.ToInt32(campo) == 0)
+	            {
+	             throw new ValorZero();
+	            }
+	        }
+	        catch (Exception ex)
+	        {
+	            
+	        }
+	    }
 	}
 }

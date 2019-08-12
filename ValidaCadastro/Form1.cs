@@ -155,8 +155,10 @@ namespace ValidaCadastro
 										break;
 									case 24: //Tipo logradouro
 										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " Tipo Logradouro");
-										Validador.ConfereTamanho(arrStrings[i], 11, contador + " campo: " + (i + 1) + " Tipo logradouro");
+										Validador.ConfereTamanho(arrStrings[i], 3, contador + " campo: " + (i + 1) + " Tipo logradouro");
 										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Tipo Logradouro");
+										Validador.ConfereDiferenteZero(arrStrings[i], contador + " campo: " + (i + 1) + " Tipo Logradouro");
+
 										break;
 									case 25: //logradouro
 										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " Logradouro");
@@ -192,21 +194,21 @@ namespace ValidaCadastro
 										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Responsável cadastro");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Responsável cadastro");
 
-										if (!arrStrings[i].Equals("3"))//se p responsável for o pai ou a mãe
+										if (!arrStrings[i].Equals("3"))//se o responsável for o pai ou a mãe
 										{
 											//só pode conter os valores 1 ou 2
 											Validador.ConfereValor(arrStrings[i], "1", "2", contador + " campo: " + (i + 1) + " Responsável cadastro");
 											//os campos nome do resposável CPF devem ficar nulos
 											Validador.ConfereNulo(arrStrings[i + 1], contador + " campo: " + (i + 1) + " Nome responsável -outro");
 											Validador.ConfereNulo(arrStrings[i + 2], contador + " campo: " + (i + 1) + " cpf responsável");
-
 										}
-										else
+										else //se o responsável for OUTRO
 										{
 											//nome do responsável - índice 31
 											Validador.ConfereObrigatorio(arrStrings[i + 1], contador + " campo: " + (i + 1) + " Nome responsável -outro");
 											Validador.ConfereTamanho(arrStrings[i + 1], 255, contador + " campo: " + (i + 1) + " Nome Responsável - outro");
 											//cpf do responsável - índice 32
+											Validador.ConfereObrigatorio(arrStrings[i + 2],contador + " campo: cpf responsável" + (i + 2));
 											Validador.ConfereTamanho(arrStrings[i + 2], 15, contador + " campo: cpf responsável" + (i + 2));
 										}
 										break;
@@ -234,22 +236,24 @@ namespace ValidaCadastro
 										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " Modalidade Ensino");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Modalidade Ensino");
 										Validador.ConfereNumero(arrStrings[i], contador + " campo: " + (i + 1) + " Modalidade Ensino");
-										Validador.ConfereValor(arrStrings[i], "1", "1",
-											contador + " campo: " +
-											(i + 1) + "Modalidade Ensino"); //nao pode ser outro valor a não ser 1-Ensino Fund. Regular
+										Validador.ConfereValor(arrStrings[i], "1", "1", contador + " campo: " + (i + 1) + "Modalidade Ensino"); //nao pode ser outro valor a não ser 1-Ensino Fund. Regular
 										break;
-									case 39://Ano que irá cursar em 2018
+									case 39://Ano que irá cursar em 2020
 										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " Ano que irá cursar");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Ano que irá cursar");
-										Validador.ConfereValor(arrStrings[i], "1", "1",
-											contador + " campo: " + (i + 1) + " Ano que irá cursar"); //nao pode ser diferete de 1 - 1º ano
+										Validador.ConfereValor(arrStrings[i], "1", "1", contador + " campo: " + (i + 1) + " Ano que irá cursar"); //nao pode ser diferete de 1 - 1º ano
 										break;
 									case 40://Procedente de
 										Validador.ConfereObrigatorio(arrStrings[i], contador + " campo: " + (i + 1) + " Procedente de");
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Procedente de");
-										Validador.ConfereValor(arrStrings[i], "3", "3",
-											contador + " campo: " + (i + 1) + " Procedente de");
+										Validador.ConfereValor(arrStrings[i], "3", "3",contador + " campo: " + (i + 1) + " Procedente de");
 										break;
+									case 41: //Etapa que irá cursar em 2020
+										Validador.ConfereObrigatorio(arrStrings[i],contador + " campo: " + (i + 1) + " Etapa que irá cursar em 2020");
+										Validador.ConfereTamanho(arrStrings[i],1,contador + " campo: " + (i + 1) + " Etapa que irá cursar em 2020");
+										Validador.ConfereValor(arrStrings[i],"1","1",contador + " campo: " + (i + 1) + " Etapa que irá cursar em 2020");
+										break;
+									
 								}
 							}
 							contador++;

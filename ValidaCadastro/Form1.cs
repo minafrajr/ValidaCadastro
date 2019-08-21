@@ -134,6 +134,7 @@ namespace ValidaCadastro
 										Validador.ConfereTamanho(arrStrings[i], 50, contador + " campo: " + (i + 1) + " Matrícula");
 										//Validador.ConfereTamanho(arrStrings[i], 2, contador + " campo: " + (i + 1) + " Matrícula");
 										Validador.ConfereTamanhoMinimo(arrStrings[i], 40, contador + " campo: " + (i + 1) + " Matrícula - tamanho: " + arrStrings[i].Length.ToString());
+										Validador.ConfereDoisEspacos(arrStrings[i],contador + " campo: " + (i + 1) + " Matrícula - tamanho: " + arrStrings[i].Length);
 										break;
 									case 19: //Carteira Identidade aluno
 										Validador.ConfereTamanho(arrStrings[i], 15, contador + " campo: " + (i + 1) + " C.I.");
@@ -206,8 +207,7 @@ namespace ValidaCadastro
 											Validador.ConfereObrigatorio(arrStrings[i + 1], contador + " campo: " + (i + 1) + " Nome responsável -outro");
 											Validador.ConfereTamanho(arrStrings[i + 1], 255, contador + " campo: " + (i + 1) + " Nome Responsável - outro");
 											//cpf do responsável - índice 32
-											Validador.ConfereObrigatorio(arrStrings[i + 2],contador + " campo: cpf responsável" + (i + 2));
-											Validador.ConfereTamanho(arrStrings[i + 2], 15, contador + " campo: cpf responsável" + (i + 2));
+											Validador.ConfereTamanho(arrStrings[i + 2], 15, contador + " campo: "+ (i + 2) + " cpf responsável - outro" );
 										}
 										break;
 									case 33: //telefone 1 DDD
@@ -246,12 +246,6 @@ namespace ValidaCadastro
 										Validador.ConfereTamanho(arrStrings[i], 1, contador + " campo: " + (i + 1) + " Procedente de");
 										Validador.ConfereValor(arrStrings[i], "3", "3",contador + " campo: " + (i + 1) + " Procedente de");
 										break;
-									case 41: //Etapa que irá cursar em 2020
-										Validador.ConfereObrigatorio(arrStrings[i],contador + " campo: " + (i + 1) + " Etapa que irá cursar em 2020");
-										Validador.ConfereTamanho(arrStrings[i],1,contador + " campo: " + (i + 1) + " Etapa que irá cursar em 2020");
-										Validador.ConfereValor(arrStrings[i],"1","1",contador + " campo: " + (i + 1) + " Etapa que irá cursar em 2020");
-										break;
-									
 								}
 							}
 							contador++;
@@ -260,8 +254,8 @@ namespace ValidaCadastro
 							this.backgroundWorker1.ReportProgress(contador);
 						}
 					}
-					lbl_erros.Text = _logService.Numero_errros.ToString();
-					lbl_erros.Invoke(new Action(() => { lbl_erros.Text = _logService.Numero_errros.ToString(); }));
+					//lbl_erros.Text = _logService.Numero_errros.ToString();
+					//lbl_erros.Invoke(new Action(() => { lbl_erros.Text = _logService.Numero_errros.ToString(); }));
 					_logService.Log("Leitura concluída");
 				}
 			}
@@ -303,7 +297,7 @@ namespace ValidaCadastro
 
 			tempodecorrido = tempoFinal - tempoInicial;
 			lbl_tempodecorrido.Text = tempodecorrido.TotalMinutes.ToString();
-			lbl_erros.Text = _logService.Numero_errros.ToString();
+			//lbl_erros.Text = _logService.Numero_errros.ToString();
 
 		}
 

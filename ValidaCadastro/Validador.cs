@@ -165,19 +165,35 @@ namespace ValidaCadastro
 			}
 		}
 
-	    public static void ConfereDiferenteZero(string campo, string linha)
-	    {
-	        try
-	        {
-	            if (Convert.ToInt32(campo) == 0)
-	            {
-	             throw new ValorZero();
-	            }
-	        }
-	        catch (Exception ex)
-	        {
-	            
-	        }
-	    }
+		public static void ConfereDiferenteZero(string campo, string linha)
+		{
+			try
+			{
+				if (Convert.ToInt32(campo) == 0)
+				{
+				 throw new ValorZero();
+				}
+			}
+			catch (Exception ex)
+			{
+				LogService.Log(ex,linha);
+			}
+		}
+
+		public static void ConfereDoisEspacos(string campo, string linha)
+		{
+			try
+			{
+				if (campo.Contains("  "))
+				{
+					throw new CampoEmBranco();
+				}
+
+			}
+			catch (Exception ex)
+			{
+				LogService.Log(ex, linha);
+			}
+		}
 	}
 }

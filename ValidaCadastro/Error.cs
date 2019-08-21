@@ -53,6 +53,11 @@ namespace ValidaCadastro
     {
         public override string Message => Const.erroValorZero;
     }
+
+    public class CampoEmBranco : Exception
+    {
+        public override string Message => Const.erroCamposEmBranco;
+    }
 }
 
 
